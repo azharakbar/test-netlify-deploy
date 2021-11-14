@@ -24,12 +24,12 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './build'
-          production-branch: dummy
+          production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
           overwrites-pull-request-comment: false
-          enable-commit-comment: true
+          enable-commit-comment: false
           production-deploy: false
           enable-commit-status: true
           alias: deploy-preview-${{ github.event.number }}
@@ -58,14 +58,15 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './build'
-          production-branch: dummy
+          production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions to dev"
           enable-pull-request-comment: false
           overwrites-pull-request-comment: false
-          enable-commit-comment: true
+          enable-commit-comment: false
           production-deploy: false
           enable-commit-status: true
+          github-deployment-environment: dev
           alias: dev
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
