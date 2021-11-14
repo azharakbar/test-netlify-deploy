@@ -5,8 +5,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
 jobs:
-  build:
+  build_and_deploy_to_preview:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +32,33 @@ jobs:
           production-deploy: false
           enable-commit-status: true
           alias: deploy-preview-${{ github.event.number }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+
+  deploy_to_dev:
+    name: Deploy to Dev 
+    if: github.event.ref == 'refs/heads/master'
+    needs: [build_and_deploy_to_preview]
+    runs-on: ubuntu-latest
+    # environment: 
+      # name: dev
+      # url: 'https://dev.margin-free.netlify.app'
+    steps:
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './build'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions to dev"
+          enable-pull-request-comment: false
+          overwrites-pull-request-comment: false
+          enable-commit-comment: true
+          production-deploy: false
+          enable-commit-status: true
+          alias: dev
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
