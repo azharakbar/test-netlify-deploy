@@ -12,6 +12,9 @@ function App() {
           {process.env.MY_SECRET} Yay!! From GA Axns!! Edit <code>src/App.js</code> and save to reload.
           <br />
             Cool Deployments
+            <br />
+              Stopped builds in netlify
+<br /> Changing again to create new commit
         </p>
         <a
           className="App-link"
