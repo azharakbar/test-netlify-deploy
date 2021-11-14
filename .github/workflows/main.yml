@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, dummy ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, dummy ]
 
 jobs:
   deploy_to_preview:
