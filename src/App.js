@@ -14,7 +14,9 @@ function App() {
             Cool Deployments
             <br />
               Stopped builds in netlify
-<br /> Changing again to create new commit
+<br /> Changing again to create new commit <br />
+Super Cool Deployments
+            <br />
         </p>
         <a
           className="App-link"
