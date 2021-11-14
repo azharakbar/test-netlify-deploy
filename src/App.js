@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   console.log(process.env)
-  const mySecret = process.env.ENV_SECRET;
-  const myConstant = process.env.FIRST;
+  const mySecret = process.env.REACT_APP_ENV_SECRET;
+  const myConstant = process.env.REACT_APP_FIRST;
   const anotherConstant = 'azhar';
   
   return (
