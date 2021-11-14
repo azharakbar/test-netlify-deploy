@@ -142,8 +142,8 @@ jobs:
           enable-commit-comment: false
           production-deploy: true
           enable-commit-status: false
-          github-deployment-environment: production
-          github-deployment-description: Description of the GitHub Prod Deployment
+#           github-deployment-environment: production
+#           github-deployment-description: Description of the GitHub Prod Deployment
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
