@@ -146,3 +146,10 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
+      - name: Set deployment status
+        uses: rsotnychenko/deployment-status-update@0.2.0
+        id: set_state_final
+        if: always()
+        with:
+          status: ${{ job.status }}
+          run_id: ${{ github.run_id }}
