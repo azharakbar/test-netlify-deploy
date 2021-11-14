@@ -74,8 +74,6 @@ jobs:
           production-deploy: false
           enable-commit-status: true
           alias: dev
-          github-deployment-environment: dev
-          github-deployment-description: Description of the GitHub Dev Deployment
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -111,8 +109,6 @@ jobs:
           production-deploy: false
           enable-commit-status: true
           alias: stage
-          github-deployment-environment: stage
-          github-deployment-description: Description of the GitHub Stage Deployment
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -146,8 +142,6 @@ jobs:
           enable-commit-comment: false
           production-deploy: true
           enable-commit-status: false
-          github-deployment-environment: production
-          github-deployment-description: Description of the GitHub Prod Deployment
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
