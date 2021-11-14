@@ -116,7 +116,7 @@ jobs:
 
   deploy_to_prod:
     name: Deploy to Prod 
-#     environment: 
+    environment: production
 #       name: production
 #       url: 'https://margin-free.netlify.app'
     if: github.event.ref == 'refs/heads/master'
