@@ -116,7 +116,7 @@ jobs:
 
   deploy_to_prod:
     name: Deploy to Prod 
-    environment: 
+    environment:
       name: production
       url: 'https://margin-free.netlify.app'
     if: github.event.ref == 'refs/heads/master'
@@ -141,7 +141,9 @@ jobs:
           overwrites-pull-request-comment: false
           enable-commit-comment: false
           production-deploy: true
-          enable-commit-status: true
+          enable-commit-status: false
+#           github-deployment-environment: production
+#           github-deployment-description: Description of the GitHub Prod Deployment
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

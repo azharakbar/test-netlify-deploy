@@ -9,14 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          {process.env.MY_SECRET} Yay!! From GA Axns!! Edit <code>src/App.js</code> and save to reload.
-          <br />
-            Cool Deployments
-            <br />
-              Stopped builds in netlify
-<br /> Changing again to create new commit <br />
-Super Cool Deployments
-            <br />
+          Alhamdulillah !!!
         </p>
         <a
           className="App-link"
