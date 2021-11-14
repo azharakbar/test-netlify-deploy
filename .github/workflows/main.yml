@@ -51,6 +51,13 @@ jobs:
       
       - name: Build Client
         run: npm run build
+        
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: build
+          path: build
+          retention-days: 90
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
