@@ -73,7 +73,6 @@ jobs:
           enable-commit-comment: false
           production-deploy: false
           enable-commit-status: true
-          github-deployment-environment: dev
           alias: dev
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -109,7 +108,6 @@ jobs:
           enable-commit-comment: false
           production-deploy: false
           enable-commit-status: true
-          github-deployment-environment: stage
           alias: stage
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -144,7 +142,6 @@ jobs:
           enable-commit-comment: false
           production-deploy: true
           enable-commit-status: true
-          github-deployment-environment: production
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
