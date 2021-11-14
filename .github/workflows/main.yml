@@ -9,6 +9,7 @@ on:
 jobs:
   build_and_deploy_to_preview:
     runs-on: ubuntu-18.04
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v2
 
@@ -40,12 +41,19 @@ jobs:
   deploy_to_dev:
     name: Deploy to Dev 
     if: github.event.ref == 'refs/heads/master'
-    needs: [build_and_deploy_to_preview]
     runs-on: ubuntu-latest
     # environment: 
       # name: dev
       # url: 'https://dev.margin-free.netlify.app'
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Client
+        run: npm ci
+      
+      - name: Build Client
+        run: npm run build
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
