@@ -41,6 +41,8 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          ENV_SECRET: ${{ secrets.ENV_SECRET }}
+          FIRST: 'first'
         timeout-minutes: 1
 
   deploy_to_dev:
