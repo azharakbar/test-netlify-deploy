@@ -2,12 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  console.log(process.env)
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           {process.env.MY_SECRET} Yay!! From GA Axns!! Edit <code>src/App.js</code> and save to reload.
+          <br />
+            Cool Deployments
         </p>
         <a
           className="App-link"
