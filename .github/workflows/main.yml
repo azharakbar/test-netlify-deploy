@@ -130,6 +130,15 @@ jobs:
         with:
           name: build
           path: build
+
+      - name: start deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
@@ -146,10 +155,12 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
-      - name: Set deployment status
-        uses: rsotnychenko/deployment-status-update@0.2.0
-        id: set_state_final
+
+      - name: update deployment status
+        uses: bobheadxi/deployments@v0.4.3
         if: always()
         with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
-          run_id: ${{ github.run_id }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
