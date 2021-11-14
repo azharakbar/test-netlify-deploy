@@ -123,12 +123,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Install Client
+        run: npm ci
+      
+      - name: Build Client
+        run: npm run build
 
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
-        with:
-          name: build
-          path: build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
