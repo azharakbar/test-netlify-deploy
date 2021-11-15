@@ -1,0 +1,41 @@
+# .github/workflows/netlify.yml
+name: Build and Publish Release
+# on:
+#   workflow_dispatch
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      # ( Build to ./dist or other directory... )
+      - name: Install Client
+        run: npm ci
+        
+      - name: Test Client
+        run: npm run test
+      
+      - name: Build Client
+        run: npm run build
+        
+      - name: tar build
+        run: tar -cvf build.tar build
+        
+      - name: zip build
+        run: zip -r build.zip build
+        
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            build.tar
+            build.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: false

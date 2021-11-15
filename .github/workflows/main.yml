@@ -19,6 +19,11 @@ jobs:
       
       - name: Build Client
         run: npm run build
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'negative'
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
@@ -36,6 +41,8 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'zeroth'
         timeout-minutes: 1
 
   deploy_to_dev:
@@ -53,6 +60,9 @@ jobs:
       
       - name: Build Client
         run: npm run build
+        env:
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'first'
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2.2.4
@@ -77,6 +87,8 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'first'
         timeout-minutes: 1
 
   deploy_to_stage:
@@ -112,6 +124,8 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'second'
         timeout-minutes: 1
 
   deploy_to_prod:
@@ -145,4 +159,6 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          REACT_APP_ENV_SECRET: ${{secrets.ENV_SECRET}}
+          REACT_APP_FIRST: 'third'
         timeout-minutes: 1

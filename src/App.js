@@ -3,6 +3,9 @@ import './App.css';
 
 function App() {
   console.log(process.env)
+  const mySecret = process.env.REACT_APP_ENV_SECRET;
+  const myConstant = process.env.REACT_APP_FIRST;
+  const anotherConstant = 'azhar';
   
   return (
     <div className="App">
@@ -10,6 +13,12 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Alhamdulillah !!!
+          <br />
+          Secret is: {mySecret}
+          <br />
+          Constant is: {myConstant}
+          <br />
+          Another Constant is: {anotherConstant}
         </p>
         <a
           className="App-link"
