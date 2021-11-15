@@ -26,11 +26,16 @@ jobs:
       - name: tar build
         run: tar -cvf build.tar build
         
+      - name: zip build
+        run: zip -r build.zip build
+        
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: build.tar
+          files: |
+            build.tar
+            build.zip
           generate_release_notes: true
           draft: false
           prerelease: false
