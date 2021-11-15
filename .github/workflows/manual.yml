@@ -1,0 +1,27 @@
+# .github/workflows/netlify.yml
+name: Build and Deploy to Netlify
+on:
+  workflow_dispatch
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-18.04
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v2
+
+      # ( Build to ./dist or other directory... )
+      - name: Install Client
+        run: npm ci
+        
+      - name: Test Client
+        run: npm tun test
+      
+      - name: Build Client
+        run: npm run build
+        
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build
