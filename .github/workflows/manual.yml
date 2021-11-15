@@ -1,12 +1,11 @@
 # .github/workflows/netlify.yml
-name: Build and Deploy to Netlify
+name: Build and Publish Release
 on:
   workflow_dispatch
 
 jobs:
   build_and_release:
     runs-on: ubuntu-18.04
-    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v2
 
