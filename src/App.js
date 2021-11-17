@@ -19,6 +19,8 @@ function App() {
           Constant is: {myConstant}
           <br />
           Another Constant is: {anotherConstant}
+          <br />
+          Testing changelog
         </p>
         <a
           className="App-link"
